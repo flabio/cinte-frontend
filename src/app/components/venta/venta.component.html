@@ -1,0 +1,145 @@
+<hr>
+<div class="row">
+  <h1>{{msg}}</h1>
+<div class="col-12">
+  <form (ngSubmit)="guardar( f )" #f="ngForm">
+    <div class="row">
+      <div class="col-4">
+             <label>Valor de Venta</label>
+              <input type="number" class="form-control" [(ngModel)]="ventaForm.valorVenta" name="valorVenta"
+                  placeholder="valorVenta">
+      </div>
+      <div class="col-4">
+        <label>Fecha</label>
+        <input type="date" class="form-control" [(ngModel)]="ventaForm.fechaVenta" name="fechaVenta">
+    
+      </div>
+      <div class="col-4">
+        <label>Empresa</label>
+        <select class="form-control" [(ngModel)]="ventaForm.idEmpresa" name="idEmpresa">
+          <option *ngFor="let item of empresas;" [ngValue]='item.idEmpresa'>{{item.nombre}} 
+          </option>
+      </select>
+      </div>
+    </div>
+   
+    <hr>
+    <div class="form-group text-center">
+            <button type="submit" class="btn btn-outline-success">
+            <i class="fa fa-save"></i>
+            Guardar
+        </button>
+
+    </div>
+</form>
+</div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Listado de Ventas</h5>
+          <table *ngIf="ventas.length > 0" class="table table-striped ">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha Venta</th>
+                    <th scope="col">Valor Venta</th>
+                    <th scope="col">Empresa</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of ventas; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.fechaVenta}}</td>
+                    <td>{{item.valorVenta}}</td>
+                    <td>{{item.nombre}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Valor de Ventas Totales</h5>
+            <div>
+                <div class="chart">
+                  <canvas baseChart
+                    [data]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [chartType]="pieChartType"
+                
+                 
+                    [colors]="pieChartColors"
+                    [legend]="pieChartLegend">
+                  </canvas>
+                </div>
+              </div>
+            </div>
+            <div>
+     
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Listado de Ventas</h5>
+            <table *ngIf="valorMayor.length > 0" class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Total</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of valorMayor; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+         
+      </div>
+  </div>
+      </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Listado de Ventas</h5>
+
+        <form (ngSubmit)="buscar( f )" #f="ngForm">
+        
+            <div class="row">
+                <div class="col">
+                    <label>Fecha Inicio</label>
+                    <input type="date" class="form-control" [(ngModel)]="venta.fechaVenta" name="FechaInicio">
+                </div>
+                <div class="col">
+                    <label>Fecha Final</label>
+                    <input type="date" class="form-control" [(ngModel)]="venta.fechaFinal" name="FechaFinal">
+                </div>
+            </div>
+            <hr>
+            <div class="form-group text-center">
+               
+                <button type="submit" class="btn btn-outline-success">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<hr>
+<div class="row">
+    <h1>{{msg}}</h1>
+  <div class="col-12">
+    <form (ngSubmit)="guardar( f )" #f="ngForm">
+      <div class="row">
+        <div class="col-6">
+               <label>Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="empresa.nombre" name="nombre"
+                    placeholder="Nombre">
+        </div>
+        <div class="col-6">
+            <label>Dirección</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.direccion" name="direccion"
+                placeholder="Dirección">
+      
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+               <label>Teléfono</label>
+                <input type="text" class="form-control" [(ngModel)]="empresa.telefono" name="telefono"
+                    placeholder="Teléfono">
+        </div>
+        <div class="col-4">
+            <label>Pagina</label>
+            <input type="text" class="form-control" [(ngModel)]="empresa.pagina" name="pagina"
+                placeholder="Pagina">
+      
+        </div>
+        <div class="col-4">
+            <label>Fecha Registro</label>
+            <input type="date" class="form-control" [(ngModel)]="empresa.fechaRegistro" name="fechaRegistro">
+      
+        </div>
+      </div>
+      <hr>
+      <div class="form-group text-center">
+              <button type="submit" class="btn btn-outline-success">
+              <i class="fa fa-save"></i>
+              Guardar
+          </button>
+  
+      </div>
+  </form>
+  </div>
+  </div>
+<table *ngIf="empresas.length > 0" class="table table-striped ">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Pagina</th>
+            <th scope="col">Fecha</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of empresas; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.nombre}}</td>
+            <td>{{item.direccion}}</td>
+            <td>{{item.telefono}}</td>
+            <td>{{item.pagina}}</td>
+            <td>{{item.fechaRegistro}}</td>
+        </tr>
+    </tbody>
+</table>

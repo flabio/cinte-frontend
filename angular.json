@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "cinte-frontend"
+  "defaultProject": "cinte-frontend",
+  "cli": {
+    "analytics": "d34be1d2-7463-4482-aa75-034af729b722"
+  }
 }
